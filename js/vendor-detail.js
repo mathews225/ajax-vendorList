@@ -1,19 +1,17 @@
 $().ready(()=>{
     
-    $("#vendorBtn").click(() => {
-    let id = $("#vendorId").val();
-    vendorDetail(id)
+    $("#vendorLookup").click(() => {
+        let id = $("#vendorId").val();
+        vendorDetail(id)
         .done((vendor)=>{
                 console.log(vendor);
                 display(vendor);
             })
+            .fail(console.error(`Failed!`));
     })
-    .fail(console.error(`Failed!`));
+    
     
 })
-
-
-
 
 
 const display = (vendor) => {
@@ -21,10 +19,10 @@ const display = (vendor) => {
     let tbody = $("tbody");
     tbody.empty();
     
-    for (prop in vendor) {
-        row = `<tr><th>${prop}</th>`;
-        row += (`<td>${vendor[prop]}</td></tr>`);
-    }
-    
+    for (property in vendor) {
+        row = `<tr><th>${property}</th>`;
+        row += (`<td><span class="submit" id="${property}">${vendor[property]}<span></td></tr>`);
         tbody = $("tbody").append(row);
+    }
+        
 }

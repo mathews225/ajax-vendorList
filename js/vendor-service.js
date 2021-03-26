@@ -16,3 +16,14 @@ const vendorCreate = (vendor) => {
         contentType: "application/json"
     });
 }
+
+const vendorUpdate = (vendor, id) => {
+    return $.ajax({
+        method: "PUT",
+        url: `${url}/${id}`,
+        data: JSON.stringify(vendor),
+        contentType: "application/json"
+    });
+}
+
+
